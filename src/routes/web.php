@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\TodoFirst;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +14,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
+Route::get('/', [TodoFirst::class, 'index']);
+Route::post('/todos', [TodoFirst::class, 'store']);
+Route::patch('/todos/update', [TodoFirst::class, 'update']);
+Route::delete('/todos/delete', [TodoFirst::class, 'delete']);
+
